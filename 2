@@ -1,0 +1,261 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "X48 HUB", HidePremium = false, SaveConfig = true, ConfigFolder = "X48"})
+local Tab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local Section = Tab:AddSection({
+	Name = "Auto"
+})
+
+Tab:AddToggle({
+	Name = "AutoHold",
+	Default = false,
+	Callback = function(e)
+		AutoHold = e
+	end  
+})
+spawn(function()
+while wait() do
+if AutoHold then
+pcall(function()
+while true do
+    delay(0,function()
+        for _,player in pairs(game.Players:GetPlayers()) do
+            if player ~= game.Players.LocalPlayer then
+                game:GetService("ReplicatedStorage").Remotes.Interaction:FireServer(player.Character.HumanoidRootPart)
+            end
+        end
+    end)
+ wait()
+ num = num + 1
+ print("Running : ", num)
+end
+end)
+end
+end
+end)
+
+
+Tab:AddToggle({
+	Name = "AutoThrow",
+	Default = false,
+	Callback = function(a)
+		AutoThrow = a
+	end  
+})
+spawn(function()
+while wait() do
+if AutoThrow then
+pcall(function()
+local args = {
+    [1] = Vector3.new(0, 3, 0),
+    [2] = 9999999999999
+}
+
+game:GetService("ReplicatedStorage").Remotes.Throw:FireServer(unpack(args))
+end)
+end
+end
+end)
+
+Tab:AddToggle({
+	Name = "AutoThrow v2",
+	Default = false,
+	Callback = function(t)
+		AutoThrowv2 = t
+	end  
+})
+spawn(function()
+while wait() do
+if AutoThrowv2 then
+pcall(function()
+local args = {
+    [1] = Vector3.new(0,5600000000000,5600000000000),
+    [2] = 642425425424242
+}
+
+game:GetService("ReplicatedStorage").Remotes.Throw:FireServer(unpack(args))
+end)
+end
+end
+end)
+
+local Tab = Window:MakeTab({
+	Name = "Spam",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local Section = Tab:AddSection({
+	Name = "AutoSpawm"
+})
+
+local plr = {}
+local plr = {}
+ 
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+   table.insert(plr,v.Name)
+end
+
+
+
+Tab:AddDropdown({
+	Name = "Select Players", plr, function(abc)
+ Select = abc
+	end    
+})
+
+
+
+Tab:AddButton({
+	Name = "Refresh",
+	Callback = function()
+Dropdown:Refresh(List<table>,true)
+  	end    
+})
+
+
+ab:AddToggle({
+	Name = "AutoSpam",
+	Default = false,
+	Callback = function(e)
+		AutoHold = e
+	end  
+})
+
+spawn(function()
+while wait() do
+if AutoHold then
+pcall(function()
+while true do
+
+local args = {
+    [1] = Vector3.new(0,5600000000000,5600000000000),
+    [2] = 642425425424242
+}
+
+game:GetService("ReplicatedStorage").Remotes.Throw:FireServer(unpack(args))
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Select].Character.HumanoidRootPart.CFrame
+
+    delay(0,function()
+        for _,player in pairs(game.Players:GetPlayers()) do
+            if player ~= game.Players.LocalPlayer then
+                game:GetService("ReplicatedStorage").Remotes.Interaction:FireServer(player.Character.HumanoidRootPart)
+            end
+        end
+        
+    end)
+    end)
+ wait()
+ num = num + 1
+ print("Running : ", num)
+end
+end)
+end
+end
+end)
+
+
+
+local Tab = Window:MakeTab({
+	Name = "Teleport",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local Section = Tab:AddSection({
+	Name = "Teleport Players"
+})
+
+local plr = {}
+local plr = {}
+ 
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+   table.insert(plr,v.Name)
+end
+
+
+Tab:AddDropdown({
+	Name = "Select Players", plr, function(abc)
+ Select = abc
+	end    
+})
+
+
+
+Tab:AddButton({
+	Name = "Refresh",
+	Callback = function()
+Dropdown:Refresh(List<table>,true)
+  	end    
+})
+
+
+
+Tab:AddButton({
+	Name = "Cilck To Teleport",
+	Callback = function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Select].Character.HumanoidRootPart.CFrame
+  	end    
+})
+
+
+
+
+local Tab = Window:MakeTab({
+	Name = "Players",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local Section = Tab:AddSection({
+	Name = "Settings Players"
+})
+
+Tab:AddSlider({
+	Name = "WalkSpeed",
+	Min = 0,
+	Max = 100,
+	Default = 5,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "bananas",
+	Callback = function(Value)
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+	end    
+})
+
+
+Tab:AddSlider({
+	Name = "JumpPower",
+	Min = 0,
+	Max = 100,
+	Default = 5,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "bananas",
+	Callback = function(Value)
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+	end    
+})
+
+
+local Tab = Window:MakeTab({
+	Name = "Settings",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local Section = Tab:AddSection({
+	Name = "Settings
+})
+
+Tab:AddButton({
+	Name = "Rejoin",
+	Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/Rejoin-Game/main/Rejoin%20Game.lua"))()
+  	end    
+})
+
+
+
+
